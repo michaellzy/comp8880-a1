@@ -10,10 +10,11 @@ if fid < 0
 end
 dataCities = textscan(fid, '%s %d %s', 'Delimiter', '|');
 fclose(fid);
-
+airportCodes = dataCities{1};
 nodeIDs   = dataCities{2};
 cityNames = dataCities{3};
 idToCity  = containers.Map(nodeIDs, cityNames);
+airportToID  = containers.Map(airportCodes, nodeIDs);
 
 % read edge data and build the full graph
 edgeFilePath = fullfile(dataFolder, edgeFile);
